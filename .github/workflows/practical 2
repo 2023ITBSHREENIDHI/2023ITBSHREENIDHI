@@ -1,0 +1,57 @@
+class Product {
+    private int productId;
+    private String productName;
+    private double price;
+    private static int productCount = 0;
+
+    // Constructor to initialize product attributes
+    public Product(int productId, String productName, double price) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        productCount++; // Increment product count for each creation
+    }
+
+    // Calculate and return the discounted price
+    public double calculateDiscountedPrice(double discountPercentage) {
+        double discount = (discountPercentage / 100) * price;
+        return price - discount;
+    }
+
+    // Display product information
+    public void displayProductInfo() {
+        System.out.println("Product ID: " + productId);
+        System.out.println("Product Name: " + productName);
+        System.out.println("Price: $" + price);
+    }
+
+    // Static method to retrieve total product count
+    public static int getProductCount() {
+        return productCount;
+    }
+}
+
+public class Practical2 {
+    public static void main(String[] args) {
+        // Create three Product objects
+        Product product1 = new Product(101, "Laptop", 999.99);
+        Product product2 = new Product(202, "Smartphone", 499.95);
+        Product product3 = new Product(303, "Tablet", 299.50);
+
+        // Display product information
+        System.out.println("Product 1 Info:");
+        product1.displayProductInfo();
+
+        System.out.println("\nProduct 2 Info:");
+        product2.displayProductInfo();
+
+        System.out.println("\nProduct 3 Info:");
+        product3.displayProductInfo();
+
+        // Calculate and display discounted price
+        double discountPercentage = 10.0;
+        double discountedPrice = product1.calculateDiscountedPrice(discountPercentage);
+        System.out.println("\nDiscounted Price (Product 1): $" + discountedPrice);
+        // Display total product count
+        System.out.println("\nTotal Products Created: " + Product.getProductCount());
+    
